@@ -10,27 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
+	size_t	i;
 
-	i = 0;
-
-	while (i < len)
+	if (src < dst)
 	{
-		((char *)dst)[i] = ((char *)src)[i];
-		i++;
+		i = len;
+		while (i > 0)
+		{
+			((char *)dst)[i - 1] = ((char *)src)[i - 1];
+			i--;
+		}
 	}
+	else
+		ft_memcpy(dst, src, len);
 	return (dst);
 }
 
-int main()
-{
-	char src[] = "dnmkfm";
-	char dst[] = "adkmnd";
-	ft_memmove (dst, src, 5);
-	printf("%c",*dst);
-}
+// int main()
+// {
+// 	char src[] = "dnmkfm";
+// 	char dst[] = "adkmnd";
+// 	ft_memmove (dst, src, 5);
+// 	printf("%c",*dst);
+// }

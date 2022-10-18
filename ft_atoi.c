@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int result;
+	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
 	sign = 1;
@@ -27,22 +26,12 @@ int	ft_atoi(const char *str)
 		sign = sign * -1;
 		i++;
 	}
-	else if(str[i] == '+')
+	else if (str[i] == '+')
 		i++;
-	while(str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= 48 && str[i] <= 57)
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
 	return (sign * result);
 }
-
-#include <stdio.h>
-
-// int main()
-// {
-// 	char *s= "    			-543878872572572572857287287287287257287 ";
-// 	printf("%d\n",ft_atoi(s));
-// 	printf("%d\n",atoi(s));
-// 	return (0);
-// }
