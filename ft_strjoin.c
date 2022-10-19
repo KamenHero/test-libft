@@ -18,10 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	lens2;
 	char	*str;
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
 	str = malloc(sizeof (char) * (lens1 + lens2 + 1));
@@ -32,12 +30,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	i = 0;
+	while (s2[i])
 	{
-		str[i] = s2[j];
+		str[i + lens1] = s2[i];
 		i++;
-		j++;
 	}
-	str[i] = '\0';
+	str[lens1 + i] = '\0';
 	return (str);
 }
