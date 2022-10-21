@@ -16,21 +16,34 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	x;
 
 	i = 0;
 	j = 0;
-	if (ft_strlen(needle) == 0)
+	x = ft_strlen(needle) - 1;
+	if (!haystack && !needle)
+		return (0);
+	if (needle[i] == '\0')
 		return ((char *)haystack);
-	while (i < len)
+	while (i < len && haystack[i] != '\0')
 	{
-		while (haystack[i + j] == needle[j])
+		while (haystack[i + j] == needle[j] && haystack[i + j] != '\0'
+			&& i + j < len)
 		{
-			j++;
-			if (needle[j] != '\0')
+			if (j == x)
 				return ((char *)&haystack[i]);
+			j++;
 		}
 		j = 0;
 		i++;
 	}
 	return (0);
 }
+
+// #include <string.h>
+
+// int main(void)
+// {
+//     printf("%s\n", ft_strnstr("HELLO" , "LLO", 6));
+//     return (0);
+// }

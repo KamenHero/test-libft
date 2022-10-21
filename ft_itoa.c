@@ -5,47 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 21:00:46 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/20 21:00:48 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/21 16:37:44 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/21 16:37:46 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static	int	ft_len(long int nb)
+{
+	int	i;
+
+	i = 0;
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_check(long int nb, char c)
+{
+	if (nb < 0)
+	{
+		nb *= -1;
+		c = '-';
+		return (1);
+	}
+	return (0);
+}
+
 char	*ft_itoa(int n)
 {
-	int	len;
-	int	i;
-	char	*str;
-	char	c;
-	int	j;
+	char		*str;
+	char		c;
+	long int	nb;
+	int			len;
+	int			i;
 
 	len = 0;
 	i = 0;
-	if (n < 0)
-	{
-		n *= -1;
+	c = 'c';
+	nb = n;
+	if (nb < 0)
 		len++;
-		c = '-';
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		len++;
-	}
+	len += ft_len(nb);
 	str = malloc(sizeof (char) * (len +1));
-	while (str[i] != '\0')
+	str[len] = '\0';
+	while (nb != 0)
 	{
-		if (i == 0 && c == '-')
+		if (ft_check(n, c) == 1)
 		{
-			str[i] = c;
-			i++;
+			str[0] = c;
 		}
-		n = n * 10;
-		j = n * 10;
-		str[i] = (j / 10) - '0';
-		i++;
+		str[--len] = (nb % 10) + '0';
+		nb /= 10;
 	}
-	str[i] = '\0';
 	return (str);
 }
