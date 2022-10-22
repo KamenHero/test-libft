@@ -77,7 +77,7 @@ char    *ft_itoa(int n)
     if (!str)
         return (0);
     if (n == -2147483648)
-        return (int_min(n));
+        return (ft_strdup("-2147483648"));
     str[len] = '\0';
     if (n == 0)
     {
