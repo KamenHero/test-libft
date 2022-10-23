@@ -75,15 +75,14 @@ char	**ft_split(char const *s, char c)
 	str = ft_calloc ((ft_fstr (s, c) + 1), sizeof (char *));
 	if (!str)
 		return (0);
-	while (j < (int)ft_strlen(s))
+	while (start + len < ft_strlen(s))
 	{
-		start = sstart(s, c, j);
+		start = sstart(s, c, start + len);
 		len = ft_len(s, c, start);
 		str[i] = ft_substr(s, start, len);
 		if (!str[i])
 			return (ft_free_str(str, i));
-		j = start + len;
-		if (!s[sstart(s, c, j)])
+		if (!s[sstart(s, c, start + len)])
 			break ;
 		i++;
 	}
