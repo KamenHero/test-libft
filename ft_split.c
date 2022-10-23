@@ -29,43 +29,36 @@ int	ft_len(const char *str, char c, int len)
 	return (i);
 }
 
-int    ft_fstr(const char *str, char c)
+int    ft_fstr(const char *s, char c)
 {
     int    i;
     int    j;
 
     i = 0;
     j = 0;
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 	{
-		if ((str[0] != c) || (str[i] != c && str[i -1] == c))
-                j++;
-		i++;
+		while(s[i] != '\0' && s[i] == c)
+			i++;
+		if(!s[i])
+			break;
+		while(s[i] != '\0' && s[i] != c)
+			i++;
+		j++;
 	}
 	return (j);
 }
 
-// int ft_fstr2(const char *str, char c)
-// {
-//     int    i;
-//     int    j;
-
-//     while (str[i] != '\0')
-//     {
-//         i = ft_fstr(str, c);
-//         while(str[i] == c)
-//         {
-//             if ((str[i] != c && str[i -1] == c) || (str[0] != c))
-//                 j++;
-//             if (str[i] != '\0')
-//                 return(j);
-//             return (i);
-//             i++;
-//         }
-//         i++;
-//     }
-//     return (0);
-// }
+char	**ft_free_str(char **str, size_t i)
+{
+	while (i > 0)
+	{
+		free(str[i - 1]);
+		i--;
+	}
+	free(str);
+	return (NULL);
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -86,9 +79,13 @@ char	**ft_split(char const *s, char c)
 	while (j < (int)ft_strlen(s))
 	{
 		start = sstart(s, c, j);
-		len = ft_len(s , c, start + j);
-		str[i] = ft_substr(s, j + start, len);
-		j += start + len;
+		len = ft_len(s , c, start);
+		str[i] = ft_substr(s, start, len);
+		if (!str[i])
+			return (ft_free_str(str, i));
+		j = start + len;
+		if (!s[sstart(s, c, j)])
+			break;
 		i++;
 	}
 	return (str);
