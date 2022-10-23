@@ -29,20 +29,20 @@ int	ft_len(const char *str, char c, int len)
 	return (i);
 }
 
-int    ft_fstr(const char *s, char c)
+int	ft_fstr(const char *s, char c)
 {
-    int    i;
-    int    j;
+	int	i;
+	int	j;
 
-    i = 0;
-    j = 0;
+	i = 0;
+	j = 0;
 	while (s[i] != '\0')
 	{
-		while(s[i] != '\0' && s[i] == c)
+		while (s[i] != '\0' && s[i] == c)
 			i++;
-		if(!s[i])
-			break;
-		while(s[i] != '\0' && s[i] != c)
+		if (!s[i])
+			break ;
+		while (s[i] != '\0' && s[i] != c)
 			i++;
 		j++;
 	}
@@ -62,30 +62,29 @@ char	**ft_free_str(char **str, size_t i)
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		start;
-	int		j;
+	size_t	i;
+	size_t	start;
+	size_t	j;
 	char	**str;
-	int		len;
-
+	size_t	len;
 
 	i = 0;
 	start = 0;
 	len = 0;
-	j = 0; 
-	str = ft_calloc((ft_fstr(s, c) + 1),sizeof (char*) );
+	j = 0;
+	str = ft_calloc ((ft_fstr (s, c) + 1), sizeof (char *));
 	if (!str)
 		return (0);
 	while (j < (int)ft_strlen(s))
 	{
 		start = sstart(s, c, j);
-		len = ft_len(s , c, start);
+		len = ft_len(s, c, start);
 		str[i] = ft_substr(s, start, len);
 		if (!str[i])
 			return (ft_free_str(str, i));
 		j = start + len;
 		if (!s[sstart(s, c, j)])
-			break;
+			break ;
 		i++;
 	}
 	return (str);
