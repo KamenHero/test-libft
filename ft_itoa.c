@@ -14,10 +14,10 @@
 
 static	int	ft_len(long int nb)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(nb == 0)
+	if (nb == 0)
 		i++;
 	while (nb)
 	{
@@ -37,9 +37,9 @@ static	int	ft_check(int nb)
 	return (0);
 }
 
-char	*ft_fillstr(char *str, int len, int nb, int n)
+static	char	*ft_fillstr(char *str, int len, int nb, int n)
 {
-	char c;
+	char	c;
 
 	c = '-';
 	if (!str)
@@ -78,4 +78,3 @@ char	*ft_itoa(int n)
 	str = malloc(sizeof (char) * (len +1));
 	return (ft_fillstr(str, len, nb, n));
 }
-
