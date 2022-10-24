@@ -74,6 +74,8 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	if (!s)
 		return (0);
+	// if (ft_fstr(s, c) == 0)
+	// 	return (0);
 	str = ft_calloc ((ft_fstr (s, c) + 1), sizeof (char *));
 	if (!str)
 		return (0);
@@ -89,4 +91,17 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	return (str);
+}
+
+int main()
+{
+	char **tab;
+	int i = 0;
+
+	tab = ft_split("ggggggggggg", 'g');
+	while (i < 1)
+	{
+		printf("%s", tab[i]);
+		i++;
+	}
 }
