@@ -22,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 		write (fd, "-", 1);
 		ft_putnbr_fd(n, fd);
 	}
-	else if ( n > 9)
+	else if (n > 9)
 	{
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
@@ -30,3 +30,17 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
+
+// int main()
+// {
+// 	FILE	*f = fopen("c.txt", "w");
+// 		ft_putnbr_fd(512, 3);
+// 		ft_putchar_fd('\n', 3);
+// 		ft_putstr_fd("hello\n", 3);
+// 	FILE	*d = fopen("d.txt", "w");
+// 		ft_putnbr_fd(124, 4);
+// 		ft_putchar_fd('\n', 4);
+// 		ft_putstr_fd("finish", 4);
+// 	fclose(d);
+// 	fclose(f);
+// }

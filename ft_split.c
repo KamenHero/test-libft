@@ -64,18 +64,14 @@ char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	start;
-	size_t	j;
 	char	**str;
 	size_t	len;
 
 	i = 0;
 	start = 0;
 	len = 0;
-	j = 0;
 	if (!s)
 		return (0);
-	// if (ft_fstr(s, c) == 0)
-	// 	return (0);
 	str = ft_calloc ((ft_fstr (s, c) + 1), sizeof (char *));
 	if (!str)
 		return (0);
@@ -83,25 +79,25 @@ char	**ft_split(char const *s, char c)
 	{
 		start = sstart(s, c, start + len);
 		len = ft_len(s, c, start);
+		if (len == 0)
+			return (str);
 		str[i] = ft_substr(s, start, len);
 		if (!str[i])
 			return (ft_free_str(str, i));
-		if (!s[sstart(s, c, start + len)])
-			break ;
 		i++;
 	}
 	return (str);
 }
 
-int main()
-{
-	char **tab;
-	int i = 0;
+// int main()
+// {
+// 	char **tab;
+// 	int i = 0;
 
-	tab = ft_split("ggggggggggg", 'g');
-	while (i < 1)
-	{
-		printf("%s", tab[i]);
-		i++;
-	}
-}
+// 	tab = ft_split("ggggggggggg", 'g');
+// 	while (i < 1)
+// 	{
+// 		printf("%s", tab[i]);
+// 		i++;
+// 	}
+// }
