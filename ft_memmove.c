@@ -29,11 +29,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		ft_memcpy(dst, src, len);
 	return (dst);
 }
-
-// int main()
-// {
-// 	char src[] = "dnmkfm";
-// 	char dst[] = "adkmnd";
-// 	ft_memmove (dst, src, 5);
-// 	printf("%c",*dst);
-// }

@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 	len = 0;
 	if (!s)
 		return (0);
-	str = ft_calloc ((ft_fstr (s, c) + 1), sizeof (char *));
+	str = ft_calloc((ft_fstr (s, c) + 1), sizeof (char *));
 	if (!str)
 		return (0);
 	while (start + len < ft_strlen(s))
