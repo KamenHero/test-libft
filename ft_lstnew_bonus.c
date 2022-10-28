@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 20:20:20 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/18 20:20:22 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/28 09:50:04 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/28 09:50:06 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	len;
-	size_t	i;
-	char	*s2;
+	t_list	*node;
+	t_list	*temp;
 
-	len = ft_strlen((char *)s1);
-	s2 = malloc(sizeof(char) * (len + 1));
-	i = 0;
-	if (!s2)
+	temp = content;
+	node = malloc(sizeof(t_list));
+	if (!node)
 		return (0);
-	while (s1[i])
-	{
-		s2[i] = s1[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
+	node -> content = temp;
+	node -> next = NULL;
+	return (node);
 }
-
-// int main()
-// {
-// 	char *str;
-// 	str = ft_strdup("\0");
-// 	printf("%s\n", str);
-// }

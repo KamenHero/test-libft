@@ -12,8 +12,6 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-RM = rm
-
 SRCS =  ft_atoi.c\
 		ft_bzero.c\
 		ft_isalnum.c\
@@ -47,18 +45,27 @@ SRCS =  ft_atoi.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
-		ft_putnbr_fd.c
+		ft_putnbr_fd.c\
+		
 
+BONUS_SRCS = 	ft_lstnew_bonus.c\
+				ft_lstadd_front_bonus.c\
+				ft_lstsize_bonus.c\
+				ft_lstlast_bonus.c\
+				ft_lstdelone_bonus.c
 
 OBJ = $(SRCS:.c=.o)
 
+BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 	
 
 $(NAME): $(OBJ)
 	ar -r $(NAME) $(OBJ)
-#	 $(GCC) $(OBJ) -o $(NAME)
+
+bonus : $(BONUS_OBJ)
+	ar -r $(NAME) $(BONUS_OBJ)
 
 clean:
 	rm -f $(OBJ)
