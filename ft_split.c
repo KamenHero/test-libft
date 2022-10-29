@@ -94,10 +94,10 @@ char	**ft_split(char const *s, char c)
 // 	char **tab;
 // 	int i = 0;
 
-// 	tab = ft_split("ggggggggggg", 'g');
-// 	while (i < 1)
+// 	tab = ft_split("shijou saikyou no deshi kenichi ", ' ');
+// 	while (i < 6)
 // 	{
-// 		printf("%s", tab[i]);
+// 		printf("%s\n", tab[i]);
 // 		i++;
 // 	}
 // }
