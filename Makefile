@@ -72,7 +72,7 @@ bonus : $(BONUS_OBJ)
 	ar -r $(NAME) $(BONUS_OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)

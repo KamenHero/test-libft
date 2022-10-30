@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 09:50:04 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/28 09:50:06 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/30 15:10:18 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/30 15:10:19 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*ft_lstnew(void *content)
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (0);
-	node -> content = temp;
-	node -> next = NULL;
+	node->content = temp;
+	node->next = NULL;
 	return (node);
 }

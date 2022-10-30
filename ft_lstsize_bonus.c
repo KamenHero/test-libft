@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 10:00:22 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/28 10:00:25 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/30 15:51:02 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/30 15:51:03 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lstsize(t_list *lst)
 	count = 0;
 	while (lst != NULL)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		count++;
 	}
 	return (count);
