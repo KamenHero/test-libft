@@ -119,5 +119,41 @@ int main()
 	}
 }
 -------------------------
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst == NULL)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
 
+void toupp(void *content)
+{
+	int i;
+	char *str;
+
+	i = 0;
+	str = content;
+	// str = ft_strdup(content);
+	while (str[i])
+	{
+		str[i] = ft_toupper(str[i]);
+		i++;
+	}
+	// return (str);
+}
+
+int main()
+{
+	t_list *lst ;
+
+	lst = 0;
+	ft_lstadd_front(&lst, ft_lstnew(ft_strdup("oussama")));
+	ft_lstiter(lst,toupp);
+	printf("%s",lst->content);
+	return (0);
+}
 

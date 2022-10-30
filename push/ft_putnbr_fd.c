@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/24 15:44:14 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/24 15:44:16 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
+	if (n == -2147483648)
+		write (fd, "-2147483648", 11);
+	else if (n < 0)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		n *= -1;
+		write (fd, "-", 1);
+		ft_putnbr_fd(n, fd);
 	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

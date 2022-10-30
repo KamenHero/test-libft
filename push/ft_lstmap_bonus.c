@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/30 16:01:50 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/30 16:01:51 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*newlst;
+	t_list	*temp;
 
-	i = 0;
-	while (s[i] != '\0')
+	if (!lst || !f || !del)
+		return (NULL);
+	temp = lst;
+	newlst = 0;
+	while (temp)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		ft_lstadd_back(&newlst, ft_lstnew(f(temp->content)));
+		if (!newlst)
+		{
+			ft_lstclear(&lst, del);
+			return (NULL);
+		}
+		temp = temp->next;
 	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	return (newlst);
 }

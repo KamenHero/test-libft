@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/15 11:42:33 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/15 11:42:35 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_tolower(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/15 14:09:53 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/15 14:10:03 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_strncmp(const char	*s1, const char	*s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
-	{
-		write (fd, &s[i], 1);
+	if (n == 0)
+		return (0);
+	while (i < n && (unsigned char)s1[i] && (unsigned char)s2[i]
+		&& (unsigned char)s1[i] == (unsigned char)s2[i])
 		i++;
-	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

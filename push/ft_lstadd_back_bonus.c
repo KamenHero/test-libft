@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/30 15:36:57 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/30 15:36:59 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	t_list	*temp;
 
-	i = 0;
-	while (s[i] != '\0')
+	temp = *lst;
+	if (!lst || !new)
+		return ;
+	if (*lst)
 	{
-		write (fd, &s[i], 1);
-		i++;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	else
+		*lst = new;
 }

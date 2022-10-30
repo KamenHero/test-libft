@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/16 14:09:45 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/16 14:09:46 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	size_t	x;
 
 	i = 0;
-	while (s[i] != '\0')
+	j = 0;
+	x = ft_strlen(needle) - 1;
+	if (!haystack || !needle)
+		return (0);
+	if (needle[i] == '\0')
+		return ((char *)haystack);
+	while (i < len && haystack[i] != '\0')
 	{
-		write (fd, &s[i], 1);
+		while (haystack[i + j] == needle[j] && haystack[i + j] != '\0'
+			&& i + j < len)
+		{
+			if (j == x)
+				return ((char *)&haystack[i]);
+			j++;
+		}
+		j = 0;
 		i++;
 	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	return (0);
 }

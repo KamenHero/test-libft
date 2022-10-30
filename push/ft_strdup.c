@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryadi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:35:56 by oryadi            #+#    #+#             */
-/*   Updated: 2022/10/24 15:35:58 by oryadi           ###   ########.fr       */
+/*   Created: 2022/10/18 20:20:20 by oryadi            #+#    #+#             */
+/*   Updated: 2022/10/18 20:20:22 by oryadi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	size_t	len;
+	size_t	i;
+	char	*s2;
 
+	len = ft_strlen((char *)s1);
+	s2 = malloc(sizeof(char) * (len + 1));
 	i = 0;
-	while (s[i] != '\0')
+	if (!s2)
+		return (0);
+	while (s1[i])
 	{
-		write (fd, &s[i], 1);
+		s2[i] = s1[i];
 		i++;
 	}
-	write (fd, "\n", 1);
-}
-
-int main()
-{
-	char	*s;
-	int i;
-	s = "khjhg";
-	FILE *f;
-	f = fopen("t.txt", "a");
-	i = fileno(f);
-		ft_putendl_fd(s, i);
-	fclose(f);
+	s2[i] = '\0';
+	return (s2);
 }
