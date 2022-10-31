@@ -20,3 +20,16 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	return (lst);
 }
+
+// int main()
+// {
+// 	t_list	*temp;
+
+// 	temp = 0;
+// 	ft_lstadd_front(&temp, ft_lstnew(ft_strdup("oussama")));
+// 	ft_lstadd_back(&temp, ft_lstnew(ft_strdup("ryadi")));
+// 	ft_lstadd_back(&temp, ft_lstnew(ft_strdup("45456")));
+// 	ft_lstadd_back(&temp, ft_lstnew(ft_strdup("45151")));
+// 	temp = ft_lstlast(temp);
+// 	printf("%s",temp->content);
+// }

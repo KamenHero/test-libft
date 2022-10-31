@@ -28,3 +28,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		*lst = new;
 }
+
+// int main()
+// {
+// 	t_list *temp;
+
+// 	temp = 0;
+// 	ft_lstadd_front(&temp,ft_lstnew(ft_strdup("oussama")));
+// 	ft_lstadd_back(&temp,ft_lstnew(ft_strdup("ryadi")));
+// 	while (temp)
+// 	{
+// 		printf("%s\n", temp->content);
+// 		temp = temp -> next;
+// 	}
+// }

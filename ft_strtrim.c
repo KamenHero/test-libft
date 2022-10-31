@@ -95,6 +95,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	len = ft_strlen(s1) - 1;
+	if (!set)
+		return ((char *)s1);
 	if (s1[start] == '\0')
 		return (ft_strdup(""));
 	while (s1[start] != '\0' && ft_check(set, s1[start]) == 1)

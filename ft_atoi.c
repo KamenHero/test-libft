@@ -35,3 +35,8 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
+
+// int main()
+// {
+// 	printf("%d",ft_atoi("9223372036854775807"));
+// }

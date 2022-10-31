@@ -30,6 +30,7 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
+// #include <fcntl.h>
 
 // int main()
 // {
@@ -43,4 +44,8 @@ void	ft_putnbr_fd(int n, int fd)
 // 		ft_putstr_fd("finish", 4);
 // 	fclose(d);
 // 	fclose(f);
+// 	int fd= open("tds.txt", O_CREAT | O_RDONLY | O_WRONLY, 777);
+// 	ft_putnbr_fd(121561, fd);
+// 	ft_putchar_fd('\n', fd);
+// 	ft_putstr_fd("finish", fd);
 // }

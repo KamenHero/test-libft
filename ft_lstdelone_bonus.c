@@ -17,3 +17,18 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 	del(lst->content);
 	free(lst);
 }
+
+// void	msa7(void	*content)
+// {
+// 	free(content);
+// }
+
+// int main()
+// {
+// 	t_list	*temp;
+
+// 	temp = 0;
+// 	ft_lstadd_front(&temp,ft_lstnew(ft_strdup("oussama")));
+// 	ft_lstdelone(temp,msa7);
+// 	printf("%s",temp->content);
+// }

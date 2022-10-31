@@ -24,3 +24,11 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+
+// int main()
+// {
+// 	int s[10] = {5,4,5,5,6,4,8,9};
+// 	ft_memset(s,10,5);
+// 	printf("%d\n",s[0]);
+// 	printf("%d",s[1]);
+// }
